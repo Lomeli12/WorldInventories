@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+issueTrackerURL="https://github.com/Lomeli12/WorldInventories/issues"
+
+[[mods]]
+modId="worldinventories"
+version="${file.jarVersion}"
+displayName="World Inventories"
+#updateJSONURL="http://myurl.me/"
+displayURL="http://lomeli12.net/"
+logoFile="logo.png"
+authors="Lomeli"
+description='''
+Have a different inventory in each dimension, or specifiy which dimensions will have a different inventory.
+'''
+[[dependencies.worldinventories]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.worldinventories]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.14.4]"
+    ordering="NONE"
+    side="BOTH"
