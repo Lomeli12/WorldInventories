@@ -1,15 +1,14 @@
 package net.lomeli.worldinventories.capabilities;
 
-import net.lomeli.worldinventories.api.InventoryWrapper;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.world.dimension.DimensionType;
 
 public interface IPlayerDimInv {
-    boolean addInventory(InventoryWrapper wrapper, DimensionType dimType);
+    boolean addInventory(CompoundNBT inventoryTag, DimensionType dimType);
 
-    InventoryWrapper[] getDimInventories(DimensionType dimType);
+    CompoundNBT[] getDimInventories(DimensionType dimType);
 
-    InventoryWrapper[] getAllInventories();
+    CompoundNBT[] getAllInventories();
 
     void deserialize(CompoundNBT nbt);
 
