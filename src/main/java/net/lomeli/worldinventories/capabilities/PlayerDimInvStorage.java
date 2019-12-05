@@ -1,0 +1,22 @@
+package net.lomeli.worldinventories.capabilities;
+
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.INBT;
+import net.minecraft.util.Direction;
+import net.minecraftforge.common.capabilities.Capability;
+
+import javax.annotation.Nullable;
+
+public class PlayerDimInvStorage implements Capability.IStorage<IPlayerDimInv> {
+    @Nullable
+    @Override
+    public INBT writeNBT(Capability<IPlayerDimInv> capability, IPlayerDimInv instance, Direction side) {
+        return instance.serialize();
+    }
+
+    @Override
+    public void readNBT(Capability<IPlayerDimInv> capability, IPlayerDimInv instance, Direction side, INBT nbt) {
+        if (nbt instanceof CompoundNBT)
+            instance.deserialize((CompoundNBT) nbt);
+    }
+}

@@ -1,8 +1,9 @@
 package net.lomeli.worldinventories;
 
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
+import net.lomeli.worldinventories.capabilities.PlayerDimInv;
+import net.lomeli.worldinventories.capabilities.PlayerDimInvStorage;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -17,15 +18,9 @@ public class WorldInventories {
 
     public WorldInventories() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-
-    }
-
-    @SubscribeEvent
-    public static void changeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-
+        CapabilityManager.INSTANCE.register(IPlayerDimInv.class, new PlayerDimInvStorage(), PlayerDimInv::new);
     }
 }
