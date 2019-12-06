@@ -18,7 +18,7 @@ public class PlayerDimInv implements IPlayerDimInv {
 
     @Override
     public void addInventory(IDimensionInventory dimInventory) {
-        if (dimInventory != null) return;
+        if (dimInventory == null) return;
         inventories.put(dimInventory.getDimensionID(), dimInventory);
     }
 
