@@ -60,6 +60,7 @@ public class PlayerDimInv implements IPlayerDimInv {
         return nbt;
     }
 
+    @SuppressWarnings("all")
     public static IPlayerDimInv getDimInventories(PlayerEntity player) {
         if (player == null || player instanceof FakePlayer) return null;
         return player.getCapability(PlayerDimInvProvider.DIM_INV, null)
