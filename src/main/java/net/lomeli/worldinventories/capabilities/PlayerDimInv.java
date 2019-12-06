@@ -1,32 +1,35 @@
 package net.lomeli.worldinventories.capabilities;
 
 import com.google.common.collect.Maps;
+import net.lomeli.worldinventories.api.IDimensionInventory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.INBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.FakePlayer;
 
 import java.util.Map;
 
 public class PlayerDimInv implements IPlayerDimInv {
-    private Map<ResourceLocation, DimInventory> inventories;
+    private Map<ResourceLocation, IDimensionInventory> inventories;
 
     public PlayerDimInv() {
         inventories = Maps.newHashMap();
     }
 
     @Override
-    public void addInventory(ResourceLocation dimID, ResourceLocation invID, INBT inventoryTag) {
-        if (dimID == null || inventoryTag == null) return;
-        DimInventory dimInventory = this.getDimInventories(dimID);
-        dimInventory.addInventoryNBT(invID, inventoryTag);
-        inventories.put(dimID, dimInventory);
+    public void addInventory(IDimensionInventory dimInventory) {
+        if (dimInventory != null) return;
+        inventories.put(dimInventory.getDimensionID(), dimInventory);
     }
 
     @Override
-    public DimInventory getDimInventories(ResourceLocation dimID) {
-        return inventories.containsKey(dimID) ? inventories.get(dimID) : new DimInventory();
+    public IDimensionInventory getDimInventories(ResourceLocation dimID) {
+        return inventories.containsKey(dimID) ? inventories.get(dimID) : new DimInventory(dimID);
+    }
+
+    @Override
+    public void copy(Map<ResourceLocation, IDimensionInventory> inventories) {
+        this.inventories.putAll(inventories);
     }
 
     @Override
@@ -34,7 +37,7 @@ public class PlayerDimInv implements IPlayerDimInv {
         if (nbt.isEmpty()) return;
         nbt.keySet().forEach(key -> {
             CompoundNBT dimNBT = nbt.getCompound(key);
-            DimInventory dimInv = new DimInventory();
+            DimInventory dimInv = new DimInventory(new ResourceLocation(key));
             dimInv.fromNBT(dimNBT);
             inventories.put(new ResourceLocation(key), dimInv);
         });
