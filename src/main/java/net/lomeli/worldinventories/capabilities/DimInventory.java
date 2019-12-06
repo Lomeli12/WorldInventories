@@ -34,6 +34,11 @@ public class DimInventory implements IDimensionInventory {
     }
 
     @Override
+    public void clear() {
+        inventories.clear();
+    }
+
+    @Override
     public boolean isEmpty() {
         return inventories.isEmpty();
     }
