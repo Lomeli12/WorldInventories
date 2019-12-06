@@ -16,17 +16,6 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = WorldInventories.MOD_ID)
 public class CapabilityHandler {
-    @SubscribeEvent
-    public static void changeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-        PlayerEntity player = event.getPlayer();
-        IPlayerDimInv dimInv = PlayerDimInv.getDimInventories(player);
-        if (dimInv == null)
-            return;
-        IDimensionInventory newDimInventory = dimInv.getDimInventories(event.getTo().getRegistryName());
-        IDimensionInventory prevDimInventory = dimInv.getDimInventories(event.getFrom().getRegistryName());
-        MinecraftForge.EVENT_BUS.post(new SwapInventoryEvent(player, newDimInventory, prevDimInventory));
-        dimInv.addInventory(prevDimInventory);
-    }
 
     @SubscribeEvent
     public static void attachCapability(AttachCapabilitiesEvent<Entity> event) {
