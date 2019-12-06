@@ -11,12 +11,12 @@ public class PlayerDimInvStorage implements Capability.IStorage<IPlayerDimInv> {
     @Nullable
     @Override
     public INBT writeNBT(Capability<IPlayerDimInv> capability, IPlayerDimInv instance, Direction side) {
-        return instance.serialize();
+        return instance.toNBT();
     }
 
     @Override
     public void readNBT(Capability<IPlayerDimInv> capability, IPlayerDimInv instance, Direction side, INBT nbt) {
         if (nbt instanceof CompoundNBT)
-            instance.deserialize((CompoundNBT) nbt);
+            instance.fromNBT((CompoundNBT) nbt);
     }
 }

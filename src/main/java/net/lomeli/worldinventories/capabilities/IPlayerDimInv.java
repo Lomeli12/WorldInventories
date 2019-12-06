@@ -11,11 +11,11 @@ public interface IPlayerDimInv {
 
     IDimensionInventory getDimInventories(ResourceLocation dimID);
 
-    void deserialize(CompoundNBT nbt);
-
-    CompoundNBT serialize();
-
     void copy(Map<ResourceLocation, IDimensionInventory> inventories);
 
     Map<ResourceLocation, IDimensionInventory> getInventories();
+
+    void fromNBT(CompoundNBT nbt);
+
+    CompoundNBT toNBT();
 }
