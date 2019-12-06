@@ -1,5 +1,6 @@
 package net.lomeli.worldinventories.capabilities;
 
+import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
 import net.minecraft.util.Direction;

@@ -1,6 +1,6 @@
 package net.lomeli.worldinventories;
 
-import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
+import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInvStorage;
 import net.minecraftforge.common.capabilities.CapabilityManager;

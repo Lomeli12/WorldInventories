@@ -3,7 +3,7 @@ package net.lomeli.worldinventories.handlers;
 import net.lomeli.worldinventories.WorldInventories;
 import net.lomeli.worldinventories.api.IDimensionInventory;
 import net.lomeli.worldinventories.api.SwapInventoryEvent;
-import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
+import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.ListNBT;

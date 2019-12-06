@@ -2,6 +2,7 @@ package net.lomeli.worldinventories.capabilities;
 
 import com.google.common.collect.Maps;
 import net.lomeli.worldinventories.api.IDimensionInventory;
+import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;

@@ -1,6 +1,5 @@
-package net.lomeli.worldinventories.capabilities;
+package net.lomeli.worldinventories.api;
 
-import net.lomeli.worldinventories.api.IDimensionInventory;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 

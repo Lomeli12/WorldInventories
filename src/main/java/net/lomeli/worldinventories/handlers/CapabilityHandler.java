@@ -1,7 +1,7 @@
 package net.lomeli.worldinventories.handlers;
 
 import net.lomeli.worldinventories.WorldInventories;
-import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
+import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInvProvider;
 import net.minecraft.entity.Entity;
