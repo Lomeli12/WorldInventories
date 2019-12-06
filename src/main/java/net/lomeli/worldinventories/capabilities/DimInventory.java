@@ -29,10 +29,6 @@ public class DimInventory implements IDimensionInventory {
         return inventoryID != null && inventories.containsKey(inventoryID) ? inventories.get(inventoryID) : null;
     }
 
-    public Map<ResourceLocation, INBT> getInventories() {
-        return Collections.unmodifiableMap(inventories);
-    }
-
     @Override
     public void clear() {
         inventories.clear();
