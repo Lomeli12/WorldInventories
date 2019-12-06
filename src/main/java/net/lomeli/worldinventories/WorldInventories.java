@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 public class WorldInventories {
     public static final String MOD_ID = "worldinventories";
     public static final String MOD_NAME = "World Inventories";
-    public static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOG = LogManager.getLogger(MOD_NAME);
 
     public WorldInventories() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
