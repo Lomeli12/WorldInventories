@@ -14,6 +14,10 @@ public interface IPlayerDimInv {
 
     Map<ResourceLocation, IDimensionInventory> getInventories();
 
+    void setDimensionDiedIn(ResourceLocation dimID);
+
+    ResourceLocation lastDimensionDiedIn();
+
     void fromNBT(CompoundNBT nbt);
 
     CompoundNBT toNBT();

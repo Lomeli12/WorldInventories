@@ -12,6 +12,7 @@ import java.util.Map;
 
 public class PlayerDimInv implements IPlayerDimInv {
     private Map<ResourceLocation, IDimensionInventory> inventories;
+    private ResourceLocation deathDim;
 
     public PlayerDimInv() {
         inventories = Maps.newHashMap();
@@ -39,19 +40,39 @@ public class PlayerDimInv implements IPlayerDimInv {
     }
 
     @Override
+    public void setDimensionDiedIn(ResourceLocation dimID) {
+        deathDim = dimID;
+    }
+
+    @Override
+    public ResourceLocation lastDimensionDiedIn() {
+        return deathDim;
+    }
+
+    @Override
     public void fromNBT(CompoundNBT nbt) {
         if (nbt.isEmpty()) return;
+
+        if (nbt.contains("death_dimension_id", 10))
+            deathDim = new ResourceLocation(nbt.getString("death_dimension_id"));
+
         nbt.keySet().forEach(key -> {
-            CompoundNBT dimNBT = nbt.getCompound(key);
-            DimInventory dimInv = new DimInventory(new ResourceLocation(key));
-            dimInv.fromNBT(dimNBT);
-            inventories.put(new ResourceLocation(key), dimInv);
+            if (nbt.getTagId(key) == 10) { //Make sure it's a CompoundTag
+                CompoundNBT dimNBT = nbt.getCompound(key);
+                DimInventory dimInv = new DimInventory(new ResourceLocation(key));
+                dimInv.fromNBT(dimNBT);
+                inventories.put(new ResourceLocation(key), dimInv);
+            }
         });
     }
 
     @Override
     public CompoundNBT toNBT() {
         CompoundNBT nbt = new CompoundNBT();
+
+        if (deathDim != null)
+            nbt.putString("death_dimension_id", deathDim.toString());
+
         inventories.forEach((dimID, dimInv) -> {
             if (!dimInv.isEmpty()) {
                 CompoundNBT dimNBT = dimInv.toNBT();
