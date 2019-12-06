@@ -10,7 +10,7 @@ public interface IPlayerDimInv {
 
     IDimensionInventory getDimInventories(ResourceLocation dimID);
 
-    void copy(Map<ResourceLocation, IDimensionInventory> inventories);
+    void copy(IPlayerDimInv dimInv);
 
     Map<ResourceLocation, IDimensionInventory> getInventories();
 

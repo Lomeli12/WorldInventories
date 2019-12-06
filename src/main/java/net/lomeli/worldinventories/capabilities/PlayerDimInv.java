@@ -30,8 +30,10 @@ public class PlayerDimInv implements IPlayerDimInv {
     }
 
     @Override
-    public void copy(Map<ResourceLocation, IDimensionInventory> inventories) {
-        this.inventories.putAll(inventories);
+    public void copy(IPlayerDimInv dimInv) {
+        inventories.clear();
+        inventories.putAll(dimInv.getInventories());
+        setDimensionDiedIn(dimInv.lastDimensionDiedIn());
     }
 
     @Override

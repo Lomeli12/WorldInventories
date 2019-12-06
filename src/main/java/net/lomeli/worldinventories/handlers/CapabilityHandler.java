@@ -31,7 +31,7 @@ public class CapabilityHandler {
                 ResourceLocation dimID = event.getOriginal().dimension.getRegistryName();
                 oldPlayerInfo.getDimInventories(dimID).clear();
             }
-            newPlayerInfo.copy(oldPlayerInfo.getInventories());
+            newPlayerInfo.copy(oldPlayerInfo);
         }
     }
 }
