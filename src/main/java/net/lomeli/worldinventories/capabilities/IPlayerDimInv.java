@@ -1,15 +1,13 @@
 package net.lomeli.worldinventories.capabilities;
 
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.world.dimension.DimensionType;
-
-import java.util.Collection;
+import net.minecraft.nbt.INBT;
+import net.minecraft.util.ResourceLocation;
 
 public interface IPlayerDimInv {
-    void addInventory(ListNBT inventoryTag, DimensionType dimType);
+    void addInventory(ResourceLocation dimID, ResourceLocation invID, INBT inventoryTag);
 
-    Collection<ListNBT> getDimInventories(DimensionType dimType);
+    DimInventory getDimInventories(ResourceLocation dimID);
 
     void deserialize(CompoundNBT nbt);
 
