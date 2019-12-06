@@ -18,7 +18,6 @@ import net.minecraftforge.fml.common.Mod;
 public class CapabilityHandler {
     @SubscribeEvent
     public static void changeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-        WorldInventories.LOGGER.info("Did this fire first?");
         PlayerEntity player = event.getPlayer();
         IPlayerDimInv dimInv = PlayerDimInv.getDimInventories(player);
         if (dimInv == null)

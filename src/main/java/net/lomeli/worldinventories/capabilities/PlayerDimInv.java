@@ -33,6 +33,11 @@ public class PlayerDimInv implements IPlayerDimInv {
     }
 
     @Override
+    public Map<ResourceLocation, IDimensionInventory> getInventories() {
+        return inventories;
+    }
+
+    @Override
     public void deserialize(CompoundNBT nbt) {
         if (nbt.isEmpty()) return;
         nbt.keySet().forEach(key -> {
