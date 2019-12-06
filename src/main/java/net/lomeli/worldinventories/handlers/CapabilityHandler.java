@@ -1,14 +1,11 @@
 package net.lomeli.worldinventories.handlers;
 
 import net.lomeli.worldinventories.WorldInventories;
-import net.lomeli.worldinventories.api.IDimensionInventory;
-import net.lomeli.worldinventories.api.SwapInventoryEvent;
 import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInvProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
