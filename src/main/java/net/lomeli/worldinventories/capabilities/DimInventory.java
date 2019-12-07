@@ -6,7 +6,6 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
 import net.minecraft.util.ResourceLocation;
 
-import java.util.Collections;
 import java.util.Map;
 
 public class DimInventory implements IDimensionInventory {
