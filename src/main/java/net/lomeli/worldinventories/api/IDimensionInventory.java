@@ -9,6 +9,8 @@ public interface IDimensionInventory {
 
     INBT getInventoryNBT(ResourceLocation inventoryID);
 
+    void removeInventoryNBT(ResourceLocation inventoryID);
+
     ResourceLocation getDimensionID();
 
     void clear();

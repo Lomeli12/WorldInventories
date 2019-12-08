@@ -20,11 +20,14 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 public class SwapInventoryEvent extends PlayerEvent {
     private final IDimensionInventory prevDimInv;
     private final IDimensionInventory nextDimInv;
+    private final boolean keepingInventory;
 
-    public SwapInventoryEvent(PlayerEntity player, IDimensionInventory prevDimInv, IDimensionInventory nextDimInv) {
+    public SwapInventoryEvent(PlayerEntity player, IDimensionInventory prevDimInv, IDimensionInventory nextDimInv,
+                              boolean keepingInventory) {
         super(player);
         this.prevDimInv = prevDimInv;
         this.nextDimInv = nextDimInv;
+        this.keepingInventory = keepingInventory;
     }
 
     public IDimensionInventory getNextDimInventory() {
@@ -33,5 +36,9 @@ public class SwapInventoryEvent extends PlayerEvent {
 
     public IDimensionInventory getPrevDimInventory() {
         return prevDimInv;
+    }
+
+    public boolean isKeepingInventory() {
+        return keepingInventory;
     }
 }

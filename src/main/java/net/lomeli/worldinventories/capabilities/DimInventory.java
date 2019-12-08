@@ -29,6 +29,11 @@ public class DimInventory implements IDimensionInventory {
     }
 
     @Override
+    public void removeInventoryNBT(ResourceLocation inventoryID) {
+        inventories.remove(inventoryID);
+    }
+
+    @Override
     public void clear() {
         inventories.clear();
     }

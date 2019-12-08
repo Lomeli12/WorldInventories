@@ -5,7 +5,9 @@ import net.lomeli.worldinventories.api.IDimensionInventory;
 import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.lomeli.worldinventories.api.SwapInventoryEvent;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
+import net.lomeli.worldinventories.items.AngelChestItem;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.GameRules;
@@ -25,24 +27,44 @@ public class InventoryHandler {
         PlayerEntity player = event.getPlayer();
         if (player == null || player instanceof FakePlayer)
             return;
-        //Save previous dimension's inventory
-        ListNBT prevInventory = new ListNBT();
-        prevInventory = player.inventory.write(prevInventory);
-        event.getPrevDimInventory().addInventoryNBT(VANILLA_INVENTORY, prevInventory);
 
-        //Load the next dimension's inventory
         ListNBT newInventory = (ListNBT) event.getNextDimInventory().getInventoryNBT(VANILLA_INVENTORY);
-        player.inventory.clear();
-        if (newInventory != null)
-            player.inventory.read(newInventory);
+        if (event.isKeepingInventory()) {
+            // If the player had an Angel Chest, remove the previous inventory to avoid duping items when they return.
+            event.getPrevDimInventory().removeInventoryNBT(VANILLA_INVENTORY);
+
+            // If the player had an inventory in the new dimension, drop their items.
+            if (newInventory != null) {
+                PlayerInventory dummyInventory = new PlayerInventory(event.getPlayer());
+                dummyInventory.read(newInventory);
+                dummyInventory.dropAllItems();
+            }
+        } else {
+            // Save previous inventory if the player didn't use an Angel Chest
+            ListNBT prevInventory = new ListNBT();
+            prevInventory = player.inventory.write(prevInventory);
+            event.getPrevDimInventory().addInventoryNBT(VANILLA_INVENTORY, prevInventory);
+
+            //Load the next dimension's inventory
+            player.inventory.clear();
+            if (newInventory != null)
+                player.inventory.read(newInventory);
+        }
     }
 
     @SubscribeEvent
     public static void changeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         PlayerEntity player = event.getPlayer();
         IPlayerDimInv dimInv = PlayerDimInv.getDimInventories(player);
+        int slot = AngelChestItem.getAngelChestSlot(player);
+        boolean swapping = true;
+        if (slot > -1) {
+            WorldInventories.proxy.displayAngelChestEffect();
+            player.inventory.decrStackSize(slot, 1);
+            swapping = false;
+        }
         fireSwapEvent(event.getPlayer(), dimInv, event.getFrom().getRegistryName(),
-                event.getTo().getRegistryName(), false, false);
+                event.getTo().getRegistryName(), false, false, swapping);
     }
 
     @SubscribeEvent
@@ -50,16 +72,16 @@ public class InventoryHandler {
         IPlayerDimInv dimInv = PlayerDimInv.getDimInventories(event.getPlayer());
         boolean keepInventory = event.getPlayer().world.getGameRules().getBoolean(GameRules.KEEP_INVENTORY);
         fireSwapEvent(event.getPlayer(), dimInv, dimInv.lastDimensionDiedIn(),
-                event.getPlayer().dimension.getRegistryName(), true, keepInventory);
+                event.getPlayer().dimension.getRegistryName(), true, keepInventory, false);
     }
 
     private static void fireSwapEvent(PlayerEntity player, IPlayerDimInv dimInv, ResourceLocation prevDim,
-                                      ResourceLocation nextDim, boolean death, boolean keepInventory) {
+                                      ResourceLocation nextDim, boolean death, boolean keepInventory, boolean swapping) {
         if (dimInv == null || prevDim == null || nextDim == null)
             return;
         IDimensionInventory prevDimInventory = dimInv.getDimInventories(prevDim);
         IDimensionInventory newDimInventory = dimInv.getDimInventories(nextDim);
-        MinecraftForge.EVENT_BUS.post(new SwapInventoryEvent(player, prevDimInventory, newDimInventory));
+        MinecraftForge.EVENT_BUS.post(new SwapInventoryEvent(player, prevDimInventory, newDimInventory, !swapping));
         if (death && !keepInventory)
             prevDimInventory.clear(); //If keepInventory is off, clear prevDimInventory cause they dropped those items
 
