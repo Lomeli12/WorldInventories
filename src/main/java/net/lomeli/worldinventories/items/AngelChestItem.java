@@ -3,7 +3,6 @@ package net.lomeli.worldinventories.items;
 import net.lomeli.worldinventories.WorldInventories;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
