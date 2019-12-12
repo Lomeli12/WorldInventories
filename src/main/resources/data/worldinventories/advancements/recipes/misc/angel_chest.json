@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "worldinventories:angel_chest"
+    ]
+  },
+  "criteria": {
+    "worldinventories:angel_chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "worldinventories:angel_chest"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "worldinventories:angel_chest"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "worldinventories:angel_chest",
+      "has_the_recipe"
+    ]
+  ]
+}

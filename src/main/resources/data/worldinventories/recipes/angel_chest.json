@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "FEF",
+    " C ",
+    " D "
+  ],
+  "key": {
+    "F": {
+      "tag": "forge:feathers"
+    },
+    "E": {
+      "tag": "forge:ender_pearls"
+    },
+    "C": {
+      "tag": "forge:chests/wooden"
+    },
+    "D": {
+      "tag": "forge:gems/diamond"
+    }
+  },
+  "result": {
+    "item": "worldinventories:angel_chest"
+  }
+}
