@@ -3,6 +3,7 @@ package net.lomeli.worldinventories;
 import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInvStorage;
+import net.lomeli.worldinventories.network.PacketHandler;
 import net.lomeli.worldinventories.proxy.ClientProxy;
 import net.lomeli.worldinventories.proxy.CommonProxy;
 import net.lomeli.worldinventories.proxy.IProxy;
@@ -46,5 +47,6 @@ public class WorldInventories {
 
     private void setup(final FMLCommonSetupEvent event) {
         CapabilityManager.INSTANCE.register(IPlayerDimInv.class, new PlayerDimInvStorage(), PlayerDimInv::new);
+        PacketHandler.registerPackets();
     }
 }

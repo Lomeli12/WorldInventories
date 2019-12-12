@@ -7,8 +7,11 @@ import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.lomeli.worldinventories.api.SwapInventoryEvent;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.items.AngelChestItem;
+import net.lomeli.worldinventories.network.MessagePlayChestAnimation;
+import net.lomeli.worldinventories.network.PacketHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.GameRules;
@@ -64,7 +67,9 @@ public class InventoryHandler {
         int slot = AngelChestItem.getAngelChestSlot(player);
         boolean swapping = true;
         if (slot > -1) {
-            WorldInventories.proxy.displayAngelChestEffect();
+            WorldInventories.LOG.debug("Using {}'s angel chest", player.getDisplayName().getFormattedText());
+            if (player instanceof ServerPlayerEntity)
+                PacketHandler.sendToClient(new MessagePlayChestAnimation(), (ServerPlayerEntity) player);
             player.inventory.decrStackSize(slot, 1);
             swapping = false;
         }
