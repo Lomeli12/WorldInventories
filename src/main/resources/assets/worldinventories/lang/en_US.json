@@ -1,4 +1,6 @@
 {
   "item.worldinventories.angel_chest": "Angel Chest",
-  "item.worldinventories.angel_chest.info": "§7§oLets you take your inventory \nto another dimension.§r"
+  "item.worldinventories.angel_chest.info": "§7§oLets you take your inventory to another dimension.§r",
+  "config.worldinventories.affect_creative": "Set if Creative Players also change inventories.",
+  "config.worldinventories.ignored_dimensions": "List of dimensions that the player can freely move their inventory into. Dimensions should be added via their IDs, and separated by ';'. Example: minecraft:overwolrd;minecraft:the_end"
 }
