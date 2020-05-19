@@ -41,8 +41,7 @@ public class ServerConfig {
             String[] dimIDs = dimIDString.split(";");
             if (dimIDs.length < 1)
                 return;
-            for (String dimID : dimIDs)
-                ignoredDims.add(dimID);
+            Collections.addAll(ignoredDims, dimIDs);
         }
     }
 }

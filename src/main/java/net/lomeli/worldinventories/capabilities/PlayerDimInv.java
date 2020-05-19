@@ -11,7 +11,7 @@ import net.minecraftforge.common.util.FakePlayer;
 import java.util.Map;
 
 public class PlayerDimInv implements IPlayerDimInv {
-    private Map<ResourceLocation, IDimensionInventory> inventories;
+    private final Map<ResourceLocation, IDimensionInventory> inventories;
     private ResourceLocation deathDim;
 
     public PlayerDimInv() {

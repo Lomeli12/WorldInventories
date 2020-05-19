@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import java.util.Map;
 
 public class DimInventory implements IDimensionInventory {
-    private Map<ResourceLocation, INBT> inventories;
+    private final Map<ResourceLocation, INBT> inventories;
     private final ResourceLocation dimID;
 
     public DimInventory(ResourceLocation dimID) {

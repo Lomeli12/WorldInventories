@@ -12,8 +12,8 @@ public class PacketHandler {
     private static final SimpleChannel HANDLER = NetworkRegistry.newSimpleChannel(CHANNEL_NAME, () -> "1.0", s -> true, s -> true);
 
     public static void registerPackets() {
-        int packetID = 0;
-        HANDLER.registerMessage(packetID++, MessagePlayChestAnimation.class, MessagePlayChestAnimation::toBytes,
+        //int packetID = 0;
+        HANDLER.registerMessage(0, MessagePlayChestAnimation.class, MessagePlayChestAnimation::toBytes,
                 MessagePlayChestAnimation::new, MessagePlayChestAnimation::handle);
     }
 
