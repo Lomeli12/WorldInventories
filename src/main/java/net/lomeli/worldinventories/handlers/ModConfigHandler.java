@@ -1,10 +1,11 @@
 package net.lomeli.worldinventories.handlers;
 
-import net.lomeli.worldinventories.ServerConfig;
-import net.lomeli.worldinventories.WorldInventories;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+
+import net.lomeli.worldinventories.ServerConfig;
+import net.lomeli.worldinventories.WorldInventories;
 
 @Mod.EventBusSubscriber(modid = WorldInventories.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModConfigHandler {

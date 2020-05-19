@@ -1,9 +1,10 @@
 package net.lomeli.worldinventories.proxy;
 
-import net.lomeli.worldinventories.items.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
+
+import net.lomeli.worldinventories.items.ModItems;
 
 public class ClientProxy implements IProxy {
     @Override

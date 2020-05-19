@@ -1,8 +1,9 @@
 package net.lomeli.worldinventories.network;
 
-import net.lomeli.worldinventories.WorldInventories;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
+
+import net.lomeli.worldinventories.WorldInventories;
 
 import java.util.function.Supplier;
 

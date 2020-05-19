@@ -1,11 +1,12 @@
 package net.lomeli.worldinventories.network;
 
-import net.lomeli.worldinventories.WorldInventories;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.network.NetworkDirection;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
+
+import net.lomeli.worldinventories.WorldInventories;
 
 public class PacketHandler {
     private static final ResourceLocation CHANNEL_NAME = new ResourceLocation(WorldInventories.MOD_ID, "main_channel");

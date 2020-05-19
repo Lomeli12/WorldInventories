@@ -1,14 +1,5 @@
 package net.lomeli.worldinventories.handlers;
 
-import net.lomeli.worldinventories.ServerConfig;
-import net.lomeli.worldinventories.WorldInventories;
-import net.lomeli.worldinventories.api.IDimensionInventory;
-import net.lomeli.worldinventories.api.IPlayerDimInv;
-import net.lomeli.worldinventories.api.SwapInventoryEvent;
-import net.lomeli.worldinventories.capabilities.PlayerDimInv;
-import net.lomeli.worldinventories.items.AngelChestItem;
-import net.lomeli.worldinventories.network.MessagePlayChestAnimation;
-import net.lomeli.worldinventories.network.PacketHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -21,6 +12,16 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import net.lomeli.worldinventories.ServerConfig;
+import net.lomeli.worldinventories.WorldInventories;
+import net.lomeli.worldinventories.api.IDimensionInventory;
+import net.lomeli.worldinventories.api.IPlayerDimInv;
+import net.lomeli.worldinventories.api.SwapInventoryEvent;
+import net.lomeli.worldinventories.capabilities.PlayerDimInv;
+import net.lomeli.worldinventories.items.AngelChestItem;
+import net.lomeli.worldinventories.network.MessagePlayChestAnimation;
+import net.lomeli.worldinventories.network.PacketHandler;
 
 @Mod.EventBusSubscriber(modid = WorldInventories.MOD_ID)
 public class InventoryHandler {

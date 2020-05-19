@@ -1,10 +1,12 @@
 package net.lomeli.worldinventories;
 
-import com.google.common.collect.Lists;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.config.ModConfig;
 import org.apache.logging.log4j.util.Strings;
 
+import com.google.common.collect.Lists;
+
+import java.util.Collections;
 import java.util.List;
 
 public class ServerConfig {

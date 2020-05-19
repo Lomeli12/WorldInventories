@@ -1,12 +1,14 @@
 package net.lomeli.worldinventories.capabilities;
 
-import com.google.common.collect.Maps;
-import net.lomeli.worldinventories.api.IDimensionInventory;
-import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.FakePlayer;
+
+import net.lomeli.worldinventories.api.IDimensionInventory;
+import net.lomeli.worldinventories.api.IPlayerDimInv;
+
+import com.google.common.collect.Maps;
 
 import java.util.Map;
 
@@ -16,6 +18,13 @@ public class PlayerDimInv implements IPlayerDimInv {
 
     public PlayerDimInv() {
         inventories = Maps.newHashMap();
+    }
+
+    @SuppressWarnings("all")
+    public static IPlayerDimInv getDimInventories(PlayerEntity player) {
+        if (player == null || player instanceof FakePlayer) return null;
+        return player.getCapability(PlayerDimInvProvider.DIM_INV, null)
+                .orElseThrow(() -> new IllegalArgumentException("LazyOptional must not be empty!"));
     }
 
     @Override
@@ -82,12 +91,5 @@ public class PlayerDimInv implements IPlayerDimInv {
             }
         });
         return nbt;
-    }
-
-    @SuppressWarnings("all")
-    public static IPlayerDimInv getDimInventories(PlayerEntity player) {
-        if (player == null || player instanceof FakePlayer) return null;
-        return player.getCapability(PlayerDimInvProvider.DIM_INV, null)
-                .orElseThrow(() -> new IllegalArgumentException("LazyOptional must not be empty!"));
     }
 }

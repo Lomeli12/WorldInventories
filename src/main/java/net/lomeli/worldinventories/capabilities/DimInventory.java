@@ -1,10 +1,12 @@
 package net.lomeli.worldinventories.capabilities;
 
-import com.google.common.collect.Maps;
-import net.lomeli.worldinventories.api.IDimensionInventory;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
 import net.minecraft.util.ResourceLocation;
+
+import net.lomeli.worldinventories.api.IDimensionInventory;
+
+import com.google.common.collect.Maps;
 
 import java.util.Map;
 

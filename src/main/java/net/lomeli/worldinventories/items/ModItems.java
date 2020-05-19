@@ -1,11 +1,12 @@
 package net.lomeli.worldinventories.items;
 
-import net.lomeli.worldinventories.WorldInventories;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ObjectHolder;
+
+import net.lomeli.worldinventories.WorldInventories;
 
 @Mod.EventBusSubscriber(modid = WorldInventories.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModItems {

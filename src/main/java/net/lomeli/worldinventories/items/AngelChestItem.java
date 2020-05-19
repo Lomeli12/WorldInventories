@@ -1,6 +1,5 @@
 package net.lomeli.worldinventories.items;
 
-import net.lomeli.worldinventories.WorldInventories;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -11,6 +10,8 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
+import net.lomeli.worldinventories.WorldInventories;
+
 import javax.annotation.Nullable;
 import java.util.List;
 
@@ -20,11 +21,6 @@ public class AngelChestItem extends Item {
         this.setRegistryName(WorldInventories.MOD_ID, "angel_chest");
     }
 
-    @Override
-    public void addInformation(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        tooltip.add(new TranslationTextComponent("item.worldinventories.angel_chest.info"));
-    }
-
     public static int getAngelChestSlot(PlayerEntity player) {
         for (int slot = 0; slot < player.inventory.getSizeInventory(); slot++) {
             ItemStack stack = player.inventory.getStackInSlot(slot);
@@ -32,5 +28,10 @@ public class AngelChestItem extends Item {
                 return slot;
         }
         return -1;
+    }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        tooltip.add(new TranslationTextComponent("item.worldinventories.angel_chest.info"));
     }
 }
