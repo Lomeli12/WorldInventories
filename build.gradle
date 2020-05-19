@@ -97,9 +97,6 @@ task apiJar(type: Jar) {
     from(sourceSets.main.java) {
         include "net/lomeli/worldinventories/api/**"
     }
-    from(sourceSets.main.java) {
-        include "net/lomeli/worldinventories/api/**"
-    }
 }
 
 def reobfFile = file("$buildDir/reobfJar/output.jar")
