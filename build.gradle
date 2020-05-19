@@ -118,3 +118,12 @@ publishing {
         }
     }
 }
+
+build {
+	dependsOn clean
+    dependsOn jar
+	dependsOn apiJar
+	
+	jar.mustRunAfter clean
+	apiJar.mustRunAfter jar
+}
