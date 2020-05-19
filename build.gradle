@@ -8,8 +8,8 @@ buildscript {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
     }
 }
+
 apply plugin: 'net.minecraftforge.gradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
@@ -21,31 +21,25 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 
 minecraft {
     mappings channel: 'snapshot', version: "${mcMappings}"
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-    
-    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
+    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
     runs {
         client {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/client')
 
-            // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
 
-            // Recommended logging level for the console
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                worldinventories {
                     source sourceSets.main
                 }
             }
         }
 
         server {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/server')
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -54,14 +48,14 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                examplemod {
+                worldinventories {
                     source sourceSets.main
                 }
             }
         }
 
         data {
-            workingDirectory project.file('run')
+            workingDirectory project.file('run/data')
 
             // Recommended logging data for a userdev environment
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
@@ -72,7 +66,7 @@ minecraft {
             args '--mod', 'worldinventories', '--all', '--output', file('src/generated/resources/')
 
             mods {
-                examplemod {
+                worldinventories {
                     source sourceSets.main
                 }
             }
@@ -101,18 +95,20 @@ jar {
 task apiJar(type: Jar) {
     classifier = 'api'
     from(sourceSets.main.java) {
-        include "net/lomeli/worldinventories/api**"
+        include "net/lomeli/worldinventories/api/**"
     }
     from(sourceSets.main.java) {
-        include "net/lomeli/worldinventories/api**"
+        include "net/lomeli/worldinventories/api/**"
     }
 }
 
 def reobfFile = file("$buildDir/reobfJar/output.jar")
+
 def reobfArtifact = artifacts.add('default', reobfFile) {
     type 'jar'
     builtBy 'reobfJar'
 }
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
