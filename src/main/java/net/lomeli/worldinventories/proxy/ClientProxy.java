@@ -11,6 +11,7 @@ public class ClientProxy implements IProxy {
     public void displayAngelChestEffect() {
         Minecraft mc = Minecraft.getInstance();
         mc.gameRenderer.displayItemActivation(new ItemStack(ModItems.angelChest));
-        mc.particles.emitParticleAtEntity(mc.player, ParticleTypes.ENCHANT, 30);
+        if (mc.player != null)
+            mc.particles.emitParticleAtEntity(mc.player, ParticleTypes.ENCHANT, 30);
     }
 }
