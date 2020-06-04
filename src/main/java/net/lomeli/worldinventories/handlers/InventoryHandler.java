@@ -62,10 +62,11 @@ public class InventoryHandler {
         PlayerEntity player = event.getPlayer();
         if (player.abilities.isCreativeMode && !CommonConfig.affectCreative)
             return;
-        if (ServerConfig.ignoredDims.contains(event.getTo().getRegistryName().toString()))
+
         ResourceLocation name = event.getTo().getRegistryName();
         if (name != null && CommonConfig.ignoredDims.contains(name.toString()))
             return;
+
         IPlayerDimInv dimInv = PlayerDimInv.getDimInventories(player);
         int slot = AngelChestItem.getAngelChestSlot(player);
         boolean swapping = true;
