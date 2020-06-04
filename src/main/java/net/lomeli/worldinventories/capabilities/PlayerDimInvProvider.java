@@ -24,20 +24,20 @@ public class PlayerDimInvProvider implements ICapabilitySerializable<CompoundNBT
 
     @Nonnull
     @Override
-    @SuppressWarnings("all")
+    @SuppressWarnings("ConstantConditions")
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
         return cap == DIM_INV ? INSTANCE.cast() : LazyOptional.empty();
     }
 
     @Override
-    @SuppressWarnings("all")
+    @SuppressWarnings("ConstantConditions")
     public CompoundNBT serializeNBT() {
         return (CompoundNBT) DIM_INV.getStorage().writeNBT(DIM_INV, INSTANCE.orElseThrow(
                 () -> new IllegalArgumentException("LazyOptional must not be empty!")), null);
     }
 
     @Override
-    @SuppressWarnings("all")
+    @SuppressWarnings("ConstantConditions")
     public void deserializeNBT(CompoundNBT nbt) {
         DIM_INV.getStorage().readNBT(DIM_INV, this.INSTANCE.orElseThrow(
                 () -> new IllegalArgumentException("LazyOptional must not be empty!")), null, nbt);
