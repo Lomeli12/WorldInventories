@@ -13,7 +13,7 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import net.lomeli.worldinventories.ServerConfig;
+import net.lomeli.worldinventories.CommonConfig;
 import net.lomeli.worldinventories.WorldInventories;
 import net.lomeli.worldinventories.api.IDimensionInventory;
 import net.lomeli.worldinventories.api.IPlayerDimInv;
@@ -60,9 +60,11 @@ public class InventoryHandler {
     @SubscribeEvent
     public static void changeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
         PlayerEntity player = event.getPlayer();
-        if (!ServerConfig.affectCreative && player.abilities.isCreativeMode)
+        if (player.abilities.isCreativeMode && !CommonConfig.affectCreative)
             return;
         if (ServerConfig.ignoredDims.contains(event.getTo().getRegistryName().toString()))
+        ResourceLocation name = event.getTo().getRegistryName();
+        if (name != null && CommonConfig.ignoredDims.contains(name.toString()))
             return;
         IPlayerDimInv dimInv = PlayerDimInv.getDimInventories(player);
         int slot = AngelChestItem.getAngelChestSlot(player);
@@ -80,9 +82,10 @@ public class InventoryHandler {
 
     @SubscribeEvent
     public static void playerRespawn(PlayerEvent.PlayerRespawnEvent event) {
-        if (!ServerConfig.affectCreative && event.getPlayer().abilities.isCreativeMode)
+        if (!CommonConfig.affectCreative && event.getPlayer().abilities.isCreativeMode)
             return;
-        if (ServerConfig.ignoredDims.contains(event.getPlayer().dimension.getRegistryName().toString()))
+        ResourceLocation name = event.getPlayer().dimension.getRegistryName();
+        if (name != null && CommonConfig.ignoredDims.contains(name.toString()))
             return;
         IPlayerDimInv dimInv = PlayerDimInv.getDimInventories(event.getPlayer());
         boolean keepInventory = event.getPlayer().world.getGameRules().getBoolean(GameRules.KEEP_INVENTORY);

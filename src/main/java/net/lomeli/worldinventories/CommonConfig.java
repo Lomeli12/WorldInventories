@@ -9,15 +9,15 @@ import com.google.common.collect.Lists;
 import java.util.Collections;
 import java.util.List;
 
-public class ServerConfig {
-    public static ModConfig serverConfig;
+public class CommonConfig {
+    public static ModConfig modConfig;
     public static boolean affectCreative = false;
     public static List<String> ignoredDims = Lists.newArrayList();
 
     final ForgeConfigSpec.BooleanValue affectCreativeSpec;
     final ForgeConfigSpec.ConfigValue<String> ignoredDimsSpec;
 
-    public ServerConfig(final ForgeConfigSpec.Builder builder) {
+    public CommonConfig(final ForgeConfigSpec.Builder builder) {
         builder.push("common");
 
         affectCreativeSpec = builder.comment("Set if Creative Players also change inventories.")
@@ -34,11 +34,11 @@ public class ServerConfig {
     }
 
     public static void bakeConfig(final ModConfig config) {
-        serverConfig = config;
+        modConfig = config;
 
-        affectCreative = WorldInventories.SERVER_CONFIG.affectCreativeSpec.get();
+        affectCreative = WorldInventories.COMMON_CONFIG.affectCreativeSpec.get();
 
-        String dimIDString = WorldInventories.SERVER_CONFIG.ignoredDimsSpec.get();
+        String dimIDString = WorldInventories.COMMON_CONFIG.ignoredDimsSpec.get();
         if (Strings.isNotBlank(dimIDString)) {
             String[] dimIDs = dimIDString.split(";");
             if (dimIDs.length < 1)

@@ -25,22 +25,22 @@ public class WorldInventories {
     public static final String MOD_ID = "worldinventories";
     public static final String MOD_NAME = "World Inventories";
     public static final Logger LOG = LogManager.getLogger(MOD_NAME);
-    public static final ForgeConfigSpec SERVER_SPEC;
-    public static final ServerConfig SERVER_CONFIG;
+    public static final ForgeConfigSpec COMMON_SPEC;
+    public static final CommonConfig COMMON_CONFIG;
     public static IProxy proxy = DistExecutor.runForDist(() -> ClientProxy::new, () -> CommonProxy::new);
 
     static {
         {
-            final Pair<ServerConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(ServerConfig::new);
-            SERVER_CONFIG = specPair.getLeft();
-            SERVER_SPEC = specPair.getRight();
+            final Pair<CommonConfig, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(CommonConfig::new);
+            COMMON_CONFIG = specPair.getLeft();
+            COMMON_SPEC = specPair.getRight();
         }
     }
 
     public WorldInventories() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, SERVER_SPEC);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, COMMON_SPEC);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
