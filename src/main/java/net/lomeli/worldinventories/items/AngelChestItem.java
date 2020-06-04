@@ -31,7 +31,8 @@ public class AngelChestItem extends Item {
     }
 
     @Override
-    public void addInformation(ItemStack stack, @Nullable World world, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+    public void addInformation(@Nullable ItemStack stack, @Nullable World world, List<ITextComponent> tooltip,
+                               @Nullable ITooltipFlag flagIn) {
         tooltip.add(new TranslationTextComponent("item.worldinventories.angel_chest.info"));
     }
 }
