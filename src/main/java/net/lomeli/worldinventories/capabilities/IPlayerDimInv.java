@@ -1,9 +1,11 @@
-package net.lomeli.worldinventories.api;
+package net.lomeli.worldinventories.capabilities;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.Map;
+
+import net.lomeli.worldinventories.api.IDimensionInventory;
 
 public interface IPlayerDimInv {
     void addInventory(IDimensionInventory dimInventory);

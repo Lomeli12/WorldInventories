@@ -9,7 +9,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import net.lomeli.worldinventories.api.IPlayerDimInv;
+import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInvStorage;
 import net.lomeli.worldinventories.network.PacketHandler;

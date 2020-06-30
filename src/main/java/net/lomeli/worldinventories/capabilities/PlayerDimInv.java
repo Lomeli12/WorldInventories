@@ -10,7 +10,6 @@ import com.google.common.collect.Maps;
 import java.util.Map;
 
 import net.lomeli.worldinventories.api.IDimensionInventory;
-import net.lomeli.worldinventories.api.IPlayerDimInv;
 
 public class PlayerDimInv implements IPlayerDimInv {
     private final Map<ResourceLocation, IDimensionInventory> inventories;

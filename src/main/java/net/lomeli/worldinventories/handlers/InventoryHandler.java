@@ -19,7 +19,7 @@ import net.minecraft.world.GameRules;
 import net.lomeli.worldinventories.CommonConfig;
 import net.lomeli.worldinventories.WorldInventories;
 import net.lomeli.worldinventories.api.IDimensionInventory;
-import net.lomeli.worldinventories.api.IPlayerDimInv;
+import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
 import net.lomeli.worldinventories.api.SwapInventoryEvent;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.items.AngelChestItem;

@@ -8,7 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 
 import net.lomeli.worldinventories.WorldInventories;
-import net.lomeli.worldinventories.api.IPlayerDimInv;
+import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInvProvider;
 

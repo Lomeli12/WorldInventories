@@ -12,7 +12,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import net.lomeli.worldinventories.WorldInventories;
-import net.lomeli.worldinventories.api.IPlayerDimInv;
 
 public class PlayerDimInvProvider implements ICapabilitySerializable<CompoundNBT> {
     public static final ResourceLocation CAPABILITY_ID = new ResourceLocation(WorldInventories.MOD_ID, "dim_inventories");

@@ -7,8 +7,6 @@ import net.minecraft.util.Direction;
 
 import javax.annotation.Nullable;
 
-import net.lomeli.worldinventories.api.IPlayerDimInv;
-
 public class PlayerDimInvStorage implements Capability.IStorage<IPlayerDimInv> {
     @Nullable
     @Override
