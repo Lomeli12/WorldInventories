@@ -23,9 +23,11 @@ public class CapabilityHandler {
 
     @SubscribeEvent
     public static void playerClone(PlayerEvent.Clone event) {
-        IPlayerDimInv oldPlayerInfo = PlayerDimInv.getDimInventories(event.getOriginal());
-        IPlayerDimInv newPlayerInfo = PlayerDimInv.getDimInventories(event.getPlayer());
-        if (oldPlayerInfo != null && newPlayerInfo != null)
-            newPlayerInfo.copy(oldPlayerInfo);
+        if (event.isWasDeath()) {
+            IPlayerDimInv oldPlayerInfo = PlayerDimInv.getDimInventories(event.getOriginal());
+            IPlayerDimInv newPlayerInfo = PlayerDimInv.getDimInventories(event.getPlayer());
+            if (oldPlayerInfo != null && newPlayerInfo != null)
+                newPlayerInfo.copy(oldPlayerInfo);
+        }
     }
 }
