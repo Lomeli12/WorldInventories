@@ -29,7 +29,7 @@ public class CommonConfig {
 
         ignoredDimsSpec = builder
                 .comment("List of dimensions that the player can freely move their inventory into. Dimensions should" +
-                        " be added via their IDs, and separated by ';'. Example: minecraft:overwolrd;minecraft:the_end")
+                        " be added via their IDs, and separated by ';'. Example: minecraft:overworld;minecraft:the_end")
                 .translation("config.worldinventories.ignored_dimensions")
                 .define("ignored_dimensions", "");
 
