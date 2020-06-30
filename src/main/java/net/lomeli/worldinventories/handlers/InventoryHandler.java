@@ -19,8 +19,8 @@ import net.minecraft.world.GameRules;
 import net.lomeli.worldinventories.CommonConfig;
 import net.lomeli.worldinventories.WorldInventories;
 import net.lomeli.worldinventories.api.IDimensionInventory;
-import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
 import net.lomeli.worldinventories.api.SwapInventoryEvent;
+import net.lomeli.worldinventories.capabilities.IPlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.items.AngelChestItem;
 import net.lomeli.worldinventories.items.ModItems;
@@ -33,6 +33,7 @@ public class InventoryHandler {
 
     @SubscribeEvent
     public static void onSwapVanillaInventories(SwapInventoryEvent event) {
+        WorldInventories.LOG.info("Swapping {}'s inventory", event.getPlayer().getDisplayName().getFormattedText());
         PlayerEntity player = event.getPlayer();
         if (player == null || player instanceof FakePlayer)
             return;
@@ -44,6 +45,7 @@ public class InventoryHandler {
 
             // If the player had an inventory in the new dimension, drop their items.
             if (newInventory != null) {
+                WorldInventories.LOG.info("Dropping {}'s old inventory", event.getPlayer().getDisplayName().getFormattedText());
                 PlayerInventory dummyInventory = new PlayerInventory(event.getPlayer());
                 dummyInventory.read(newInventory);
                 dummyInventory.dropAllItems();
@@ -63,6 +65,7 @@ public class InventoryHandler {
 
     @SubscribeEvent
     public static void changeDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+        WorldInventories.LOG.debug("{} is changing dimensions", event.getPlayer().getDisplayName().getFormattedText());
         PlayerEntity player = event.getPlayer();
         if (player.abilities.isCreativeMode && !CommonConfig.affectCreative)
             return;
@@ -132,8 +135,11 @@ public class InventoryHandler {
 
         if (event.getEntity() instanceof ItemEntity) {
             ItemStack stack = ((ItemEntity) event.getEntity()).getItem();
-            if (stack.getItem() != ModItems.angelChest)
+            if (stack.getItem() != ModItems.angelChest) {
+                WorldInventories.LOG.debug("Stopping {} from teleporting to {}",
+                        stack.getDisplayName().getFormattedText(), event.getDimension().getRegistryName());
                 event.setCanceled(true);
+            }
         }
     }
 }
