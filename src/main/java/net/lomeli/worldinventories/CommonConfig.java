@@ -2,19 +2,22 @@ package net.lomeli.worldinventories;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.config.ModConfig;
-import org.apache.logging.log4j.util.Strings;
 
 import com.google.common.collect.Lists;
 
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.logging.log4j.util.Strings;
+
 public class CommonConfig {
     public static ModConfig modConfig;
     public static boolean affectCreative = false;
+    public static boolean stopItemTeleport = true;
     public static List<String> ignoredDims = Lists.newArrayList();
 
     final ForgeConfigSpec.BooleanValue affectCreativeSpec;
+    final ForgeConfigSpec.BooleanValue stopItemSpec;
     final ForgeConfigSpec.ConfigValue<String> ignoredDimsSpec;
 
     public CommonConfig(final ForgeConfigSpec.Builder builder) {
@@ -30,6 +33,12 @@ public class CommonConfig {
                 .translation("config.worldinventories.ignored_dimensions")
                 .define("ignored_dimensions", "");
 
+        stopItemSpec = builder
+                .comment("Stops items, except the Angel Chest, from teleporting through portals when thrown in, " +
+                        "which would defeat the purpose of this mod.")
+                .translation("config.worldinventories.disable_item_portal_interaction")
+                .define("stopItemTeleport", true);
+
         builder.pop();
     }
 
@@ -37,6 +46,7 @@ public class CommonConfig {
         modConfig = config;
 
         affectCreative = WorldInventories.COMMON_CONFIG.affectCreativeSpec.get();
+        stopItemTeleport = WorldInventories.COMMON_CONFIG.stopItemSpec.get();
 
         String dimIDString = WorldInventories.COMMON_CONFIG.ignoredDimsSpec.get();
         if (Strings.isNotBlank(dimIDString)) {

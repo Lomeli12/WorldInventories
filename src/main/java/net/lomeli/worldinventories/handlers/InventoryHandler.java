@@ -1,17 +1,20 @@
 package net.lomeli.worldinventories.handlers;
 
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.nbt.ListNBT;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.GameRules;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.event.entity.EntityTravelToDimensionEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraft.entity.item.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.ListNBT;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.GameRules;
 
 import net.lomeli.worldinventories.CommonConfig;
 import net.lomeli.worldinventories.WorldInventories;
@@ -20,6 +23,7 @@ import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.lomeli.worldinventories.api.SwapInventoryEvent;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
 import net.lomeli.worldinventories.items.AngelChestItem;
+import net.lomeli.worldinventories.items.ModItems;
 import net.lomeli.worldinventories.network.MessagePlayChestAnimation;
 import net.lomeli.worldinventories.network.PacketHandler;
 
@@ -114,6 +118,22 @@ public class InventoryHandler {
             IPlayerDimInv dimInv = PlayerDimInv.getDimInventories(player);
             if (dimInv != null)
                 dimInv.setDimensionDiedIn(player.dimension.getRegistryName());
+        }
+    }
+
+    @SubscribeEvent
+    public static void entityChangeDim(EntityTravelToDimensionEvent event) {
+        if (!CommonConfig.stopItemTeleport)
+            return;
+
+        ResourceLocation name = event.getDimension().getRegistryName();
+        if (name != null && CommonConfig.ignoredDims.contains(name.toString()))
+            return;
+
+        if (event.getEntity() instanceof ItemEntity) {
+            ItemStack stack = ((ItemEntity) event.getEntity()).getItem();
+            if (stack.getItem() != ModItems.angelChest)
+                event.setCanceled(true);
         }
     }
 }
