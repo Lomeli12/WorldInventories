@@ -10,10 +10,10 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
-import net.lomeli.worldinventories.WorldInventories;
-
 import javax.annotation.Nullable;
 import java.util.List;
+
+import net.lomeli.worldinventories.WorldInventories;
 
 public class AngelChestItem extends Item {
     public AngelChestItem() {

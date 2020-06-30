@@ -8,9 +8,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.commons.lang3.tuple.Pair;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import net.lomeli.worldinventories.api.IPlayerDimInv;
 import net.lomeli.worldinventories.capabilities.PlayerDimInv;
@@ -19,6 +16,9 @@ import net.lomeli.worldinventories.network.PacketHandler;
 import net.lomeli.worldinventories.proxy.ClientProxy;
 import net.lomeli.worldinventories.proxy.CommonProxy;
 import net.lomeli.worldinventories.proxy.IProxy;
+import org.apache.commons.lang3.tuple.Pair;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Mod(WorldInventories.MOD_ID)
 public class WorldInventories {

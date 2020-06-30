@@ -1,11 +1,11 @@
 package net.lomeli.worldinventories.network;
 
-import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.network.NetworkEvent;
-
-import net.lomeli.worldinventories.WorldInventories;
+import net.minecraft.network.PacketBuffer;
 
 import java.util.function.Supplier;
+
+import net.lomeli.worldinventories.WorldInventories;
 
 public class MessagePlayChestAnimation implements IMessage {
 

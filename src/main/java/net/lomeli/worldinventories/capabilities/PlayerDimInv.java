@@ -1,16 +1,16 @@
 package net.lomeli.worldinventories.capabilities;
 
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.common.util.FakePlayer;
-
-import net.lomeli.worldinventories.api.IDimensionInventory;
-import net.lomeli.worldinventories.api.IPlayerDimInv;
 
 import com.google.common.collect.Maps;
 
 import java.util.Map;
+
+import net.lomeli.worldinventories.api.IDimensionInventory;
+import net.lomeli.worldinventories.api.IPlayerDimInv;
 
 public class PlayerDimInv implements IPlayerDimInv {
     private final Map<ResourceLocation, IDimensionInventory> inventories;

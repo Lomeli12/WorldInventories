@@ -1,18 +1,18 @@
 package net.lomeli.worldinventories.capabilities;
 
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.common.util.LazyOptional;
-
-import net.lomeli.worldinventories.WorldInventories;
-import net.lomeli.worldinventories.api.IPlayerDimInv;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+
+import net.lomeli.worldinventories.WorldInventories;
+import net.lomeli.worldinventories.api.IPlayerDimInv;
 
 public class PlayerDimInvProvider implements ICapabilitySerializable<CompoundNBT> {
     public static final ResourceLocation CAPABILITY_ID = new ResourceLocation(WorldInventories.MOD_ID, "dim_inventories");

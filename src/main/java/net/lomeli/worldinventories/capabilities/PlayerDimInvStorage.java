@@ -1,13 +1,13 @@
 package net.lomeli.worldinventories.capabilities;
 
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;
 import net.minecraft.util.Direction;
-import net.minecraftforge.common.capabilities.Capability;
-
-import net.lomeli.worldinventories.api.IPlayerDimInv;
 
 import javax.annotation.Nullable;
+
+import net.lomeli.worldinventories.api.IPlayerDimInv;
 
 public class PlayerDimInvStorage implements Capability.IStorage<IPlayerDimInv> {
     @Nullable
